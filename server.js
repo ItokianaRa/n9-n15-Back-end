@@ -52,7 +52,8 @@ app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
   .delete(assignment.deleteAssignment);
 
- 
+app.route(prefix + '/utilisateur/:id')
+  .get(assignment.getUtilisateur);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");

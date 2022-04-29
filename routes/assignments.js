@@ -1,4 +1,5 @@
 let Assignment = require('../model/assignment');
+let Utilisateur = require('../model/utilisateur');
 
 // Récupérer tous les assignments (GET)
 /*
@@ -94,6 +95,26 @@ function deleteAssignment(req, res) {
     })
 }
 
+// Récupérer un utilisateur par son login et mot de passe (GET)
+function getUtilisateur(req, res){
+    /*let login = "Jean";//req.body.login;
+    let mdp = req.body.mdp;
+    console.log("login = " + login + " mdp = " + mdp);
+
+    /*Utilisateur.findOne({login: "Jeannette"}, (err, utilisateur) =>{
+        if(err){res.send(err)}
+        console.log("çççççççççççççççççç = " + utilisateur);
+        res.json(utilisateur);
+    })*/
+    /*Utilisateur.find({}, function(err, obj) { console.log(obj); });*/
+    let assignmentId = req.params.id;
+
+    Utilisateur.findOne({id: assignmentId}, (err, assignment) =>{
+        if(err){res.send(err)}
+        res.json(assignment);
+    })
+}
 
 
-module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment};
+
+module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment, getUtilisateur };
