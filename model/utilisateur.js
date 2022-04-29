@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let UtilisateurSchema = new Schema({
+let UtilisateurSchema = Schema({
     id: Number,
     login: String,
     nom: String,
@@ -12,5 +12,5 @@ let UtilisateurSchema = new Schema({
 
 
 // C'est à travers ce modèle Mongoose qu'on pourra faire le CRUD
-module.exports = mongoose.model('utilisateur', UtilisateurSchema);
+module.exports = mongoose.model('utilisateurs', UtilisateurSchema);
 

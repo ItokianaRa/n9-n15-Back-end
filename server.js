@@ -53,8 +53,8 @@ app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
   .delete(assignment.deleteAssignment);
 
-  app.route(prefix + '/utilisateur/:id')
-  .get(assignment.getUtilisateur);
+app.route(prefix + '/utilisateurs')
+  .post(assignment.getUtilisateur);
 
   app.route(prefix + '/matieres')
   .get(matiere.getMatiere);
