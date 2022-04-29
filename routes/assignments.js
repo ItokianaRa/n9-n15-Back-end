@@ -13,11 +13,20 @@ function getAssignments(req, res){
 }
 */
 function getAssignments(req, res) {
-    var aggregateQuery = Assignment.aggregate();
+    var condition = {};
+    if(req.query.rendu==="true"){
+        condition={rendu : true};
+    }
+    if(req.query.rendu==="false"){
+        condition={rendu : false};
+    }
+    var aggregateQuery = Assignment.aggregate(
+        [ { $match : condition } ] 
+    );
     Assignment.aggregatePaginate(aggregateQuery,
       {
         page: parseInt(req.query.page) || 1,
-        limit: parseInt(req.query.limit) || 10,
+        limit: parseInt(req.query.limit) || 10
       },
       (err, assignments) => {
         if (err) {
@@ -27,7 +36,6 @@ function getAssignments(req, res) {
       }
     );
    }
-   
 
 // Récupérer un assignment par son id (GET)
 function getAssignment(req, res){
@@ -88,4 +96,4 @@ function deleteAssignment(req, res) {
 
 
 
-module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment };
+module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment};
