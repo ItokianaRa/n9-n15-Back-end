@@ -21,9 +21,9 @@ function getAssignments(req, res) {
     if(req.query.rendu=="false"){
         Object.assign( condition,{rendu : false});
     } */
-    if(req.query.nom!=null && req.query.prenom!=null && req.query.status!=null){
+    if(req.query.name!=null && req.query.prenom!=null && req.query.status!=null){
         if(req.query.status==="professeur"){
-            Object.assign(condition,{professeur : req.query.prenom+' '+req.query.nom});
+            Object.assign(condition,{professeur : req.query.prenom+' '+req.query.name});
             if(req.query.rendu=="true"){
                 Object.assign(condition,{rendu : true});
             }
@@ -32,7 +32,7 @@ function getAssignments(req, res) {
             }
         }
         else if(req.query.status==="etudiant"){
-            Object.assign(condition,{auteur : req.query.prenom+' '+req.query.nom});
+            Object.assign(condition,{auteur : req.query.prenom+' '+req.query.name});
             if(req.query.rendu=="true"){
                 Object.assign(condition,{rendu : true});
             }
