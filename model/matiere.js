@@ -5,7 +5,7 @@ var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 let MatiereSchema = Schema({
     id: Number,
     matiere: String,
-    photo: String,
+    photo: String
 });
 
 // Pour ajouter la pagination

@@ -6,7 +6,14 @@ let AssignmentSchema = Schema({
     id: Number,
     dateDeRendu: Date,
     nom: String,
-    rendu: Boolean
+    rendu: Boolean,
+    auteur: String,
+    matiere: String,
+    note: Number,
+    remarque : String,
+    professeur: String,
+    image : String,
+    imageprof: String
 });
 
 // Pour ajouter la pagination
