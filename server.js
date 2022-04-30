@@ -59,6 +59,8 @@ app.route(prefix + '/utilisateurs')
 app.route(prefix + '/notes')
   .put(assignment.setNote);
 
+app.route(prefix + '/matieres')
+  .get(matiere.getMatiere);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
