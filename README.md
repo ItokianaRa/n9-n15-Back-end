@@ -1,5 +1,7 @@
 # MBDS_Madagascar_2021_2022Back
-Notre groupe est composée de : n°9 Ny Anjara Mamisoa Prisca n°5 Rajohnson Rakotovao Itokiana Mamy
+Notre groupe est composée de : 
+n°9 Ny Anjara Mamisoa Prisca 
+n°15 Rajohnson Rakotovao Itokiana Mamy
 
 Lien pour accéder au site: https://assignment-n9-n15.herokuapp.com/
 
