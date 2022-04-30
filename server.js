@@ -56,8 +56,9 @@ app.route(prefix + '/assignments/:id')
 app.route(prefix + '/utilisateurs')
   .post(assignment.getUtilisateur);
 
-  app.route(prefix + '/matieres')
-  .get(matiere.getMatiere);
+app.route(prefix + '/notes')
+  .put(assignment.setNote);
+
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");

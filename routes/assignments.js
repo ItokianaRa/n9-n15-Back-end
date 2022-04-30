@@ -15,12 +15,33 @@ function getAssignments(req, res){
 
 function getAssignments(req, res) {
     var condition = {};
-    if(req.query.rendu==="true"){
-        condition={rendu : true};
+    /* if(req.query.rendu=="true"){
+        Object.assign(condition,{rendu : true});
     }
-    if(req.query.rendu==="false"){
-        condition={rendu : false};
+    if(req.query.rendu=="false"){
+        Object.assign( condition,{rendu : false});
+    } */
+    if(req.query.nom!=null && req.query.prenom!=null && req.query.status!=null){
+        if(req.query.status==="professeur"){
+            Object.assign(condition,{professeur : req.query.prenom+' '+req.query.nom});
+            if(req.query.rendu=="true"){
+                Object.assign(condition,{rendu : true});
+            }
+            if(req.query.rendu=="false"){
+                Object.assign( condition,{rendu : false});
+            }
+        }
+        else if(req.query.status==="etudiant"){
+            Object.assign(condition,{auteur : req.query.prenom+' '+req.query.nom});
+            if(req.query.rendu=="true"){
+                Object.assign(condition,{rendu : true});
+            }
+            if(req.query.rendu=="false"){
+                Object.assign( condition,{rendu : false});
+            }
+        }
     }
+    console.log("looool"+condition);
     var aggregateQuery = Assignment.aggregate(
         [ { $match : condition } ] 
     );
@@ -92,6 +113,24 @@ function updateAssignment(req, res) {
 
 }
 
+// Update d'un assignment note et rendu (PUT)
+function setNote(req, res) {
+    console.log("UPDATE recu assignment : ");
+    console.log(req.body);
+    Assignment.updateOne({id: req.body.id}, {rendu: req.body.rendu, note: req.body.note}, (err, assignment) => {
+        console.log(req.body.id);
+        if (err) {
+            console.log(err);
+            res.send(err)
+        } else {
+          res.json({message: `${assignment.nom} updated!`})
+        }
+
+      // console.log('updated ', assignment)
+    });
+
+}
+
 // suppression d'un assignment (DELETE)
 function deleteAssignment(req, res) {
 
@@ -117,4 +156,4 @@ function getUtilisateur(req, res){
 
 
 
-module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment, getUtilisateur };
+module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment, getUtilisateur, setNote };
