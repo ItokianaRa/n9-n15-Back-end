@@ -1,9 +1,8 @@
 let Assignment = require('../model/assignment');
 let Utilisateur = require('../model/utilisateur');
-let Matiere = require('../model/matieres');
+let Matiere = require('../model/matiere');
 
 // Récupérer tous les assignments (GET)
-/*
 function getAssignments(req, res){
     Assignment.find((err, assignments) => {
         if(err){
@@ -13,7 +12,7 @@ function getAssignments(req, res){
         res.send(assignments);
     });
 }
-*/
+
 function getAssignments(req, res) {
     var condition = {};
     if(req.query.rendu==="true"){
@@ -96,7 +95,7 @@ function deleteAssignment(req, res) {
     })
 }
 
-// Récupérer un utilisateur par son login et mot de passe (GET)
+// Récupérer un utilisateur par son login et mot de passe (POST)
 function getUtilisateur(req, res){
     let login = req.body.login;
     let mdp = req.body.mdp;
